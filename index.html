@@ -103,6 +103,31 @@
   <footer>
     <p>© 2025 Туры по России. Студенческий проект. GitHub Pages.</p>
   </footer>
+<script>
+  // Проверяем, есть ли имя в localStorage
+  let userName = localStorage.getItem('userName');
+
+  if (!userName) {
+    // Если нет — спрашиваем у пользователя
+    userName = prompt('Как вас зовут?');
+    if (userName && userName.trim() !== '') {
+      localStorage.setItem('userName', userName.trim());
+    } else {
+      userName = 'Дорогой путешественник';
+    }
+  }
+
+  // Находим заголовок или блок, куда вставим приветствие
+  const header = document.querySelector('header');
+  if (header) {
+    const greeting = document.createElement('p');
+    greeting.style.fontSize = '1.1rem';
+    greeting.style.marginTop = '0.5rem';
+    greeting.style.color = '#0056b3';
+    greeting.textContent = `Здравствуйте, ${userName}! Добро пожаловать в мир путешествий по России.`;
+    header.appendChild(greeting);
+  }
+</script>
 
 </body>
 </html>
